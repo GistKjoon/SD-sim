@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD 미니 캐릭터 랩</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">얼굴 → SD 3D</p>
+        <h1>SD 미니 캐릭터 랩</h1>
+        <p class="subtitle">얼굴 사진을 올리고 원하는 부분을 잘라서 3D SD 바디에 바로 입힙니다. 프레이밍/밝기 조정과 라이브 미리보기 지원.</p>
+      </div>
+      <div class="top-actions">
+        <button class="ghost" id="btnResetCamera">카메라 리셋</button>
+        <button class="primary" id="btnDownloadTexture">텍스처 저장</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="panel controls">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">입력</p>
+            <h2>얼굴 처리</h2>
+            <p class="caption">정사각형이 아니어도 괜찮아요. 사진을 올린 뒤 원하는 얼굴 영역을 클릭해서 잘라 사용하세요.</p>
+          </div>
+          <div class="inline-actions">
+            <button class="ghost" id="btnSample">샘플 얼굴 불러오기</button>
+            <button class="ghost" id="btnClear">지우기</button>
+          </div>
+        </div>
+
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <div class="dropcopy">
+            <p class="drop-title">이미지를 끌어놓거나 클릭해서 선택</p>
+            <p class="caption">PNG / JPG / SVG 모두 가능. 정사각형에 가까우면 더 깔끔.</p>
+          </div>
+        </label>
+
+        <div class="source-preview">
+          <div class="preview-header">
+            <span class="eyebrow">원본에서 선택</span>
+            <span class="caption">캔버스를 클릭해 얼굴 중심을 지정하세요</span>
+          </div>
+          <canvas id="sourceCanvas" width="360" height="360" aria-label="원본 이미지 미리보기"></canvas>
+        </div>
+
+        <div class="controls-grid">
+          <label class="control">
+            <div class="label-row">
+              <span>얼굴 확대</span>
+              <span class="value" id="scaleValue">1.10x</span>
+            </div>
+            <input type="range" id="rangeScale" min="0.8" max="1.6" step="0.01" value="1.1" />
+          </label>
+          <label class="control">
+            <div class="label-row">
+              <span>세로 위치</span>
+              <span class="value" id="offsetValue">0%</span>
+            </div>
+            <input type="range" id="rangeOffset" min="-40" max="40" step="1" value="0" />
+          </label>
+          <label class="control">
+            <div class="label-row">
+              <span>톤 보정</span>
+              <span class="value" id="toneValue">0</span>
+            </div>
+            <input type="range" id="rangeTone" min="-30" max="30" step="1" value="0" />
+          </label>
+        </div>
+
+        <div class="preview">
+          <div class="preview-header">
+            <span class="eyebrow">결과 텍스처</span>
+            <span class="caption">512x512 미리보기</span>
+          </div>
+          <canvas id="faceCanvas" width="512" height="512" aria-label="Face texture preview"></canvas>
+        </div>
+      </section>
+
+      <section class="panel viewer">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">3D 뷰</p>
+            <h2>SD 바디 + 내 얼굴</h2>
+            <p class="caption">회전/줌으로 확인하세요. 머리는 위에서 만든 텍스처가 실시간으로 들어갑니다.</p>
+          </div>
+          <div class="inline-actions">
+            <span class="pill">머리 약 60% 비율</span>
+            <span class="pill">통통 튀는 아이들 애니메이션</span>
+          </div>
+        </div>
+        <div class="viewer-shell">
+          <div id="viewer"></div>
+          <div class="hints">
+            <p class="caption">팁: 얼굴이 잘리지 않게 얼굴 확대/세로 위치를 조정하세요. 드래그로 회전, 휠로 줌.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>완전 로컬: 이 HTML 하나로 브라우저에서만 동작하며, 이미지는 외부로 전송되지 않습니다.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

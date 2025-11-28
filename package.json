@@ -1,0 +1,12 @@
+{
+  "name": "sd-mini-character-lab",
+  "version": "0.1.0",
+  "description": "로컬에서 돌아가는 SD 미니 캐릭터 얼굴-매핑 데모 (Electron)",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^28.2.0"
+  }
+}
