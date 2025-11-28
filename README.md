@@ -1,6 +1,10 @@
 # SD Mini Character Lab
 
 A small browser demo that takes a 2D face image, crops and tones it, and projects it onto a super-deformed (chibi) 3D body. Everything runs locally in the browser—no builds or servers required.
+<img width="2476" height="1838" alt="image" src="https://github.com/user-attachments/assets/5cffab20-81fb-4d7a-84b8-0b6d1738b5fa" />
+
+<img width="2610" height="1846" alt="image" src="https://github.com/user-attachments/assets/2549d752-b1e8-4569-ba2e-6d3efbcae87a" />
+
 
 ## 클론 후 실행 (한국어)
 
